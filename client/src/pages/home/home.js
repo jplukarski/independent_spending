@@ -12,7 +12,7 @@ import {
 import Piechart from '../../components/piechart/piechart'
 
 const Home = () => (
-    <div>
+    <>
         <Menu fixed='top' borderless>
             <Container>
                 <Menu.Item header>
@@ -23,9 +23,9 @@ const Home = () => (
             </Container>
         </Menu>
 
-        <Container text style={{ marginTop: '7em' }}>
+        <div style={{ marginTop: '7em' }} className="piechart">
             <Piechart />
-        </Container>
+        </div>
 
         <Segment inverted vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
             <Container textAlign='center'>
@@ -83,7 +83,7 @@ const Home = () => (
                 </List>
             </Container>
         </Segment>
-    </div>
+    </>
 )
 
 export default Home

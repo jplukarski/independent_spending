@@ -1,21 +1,21 @@
 import React, { PureComponent } from 'react';
-import { PieChart, Pie, Sector } from 'recharts';
+import { PieChart, Pie, Sector, ResponsiveContainer } from 'recharts';
 
 const data = [
-    { name: 'Group A', value: 400 },
-    { name: 'Group B', value: 300 },
-    { name: 'Group C', value: 300 },
-    { name: 'Group D', value: 200 },
-    { name: 'Group E', value: 250 },
-    { name: 'Group F', value: 600 },
-    { name: 'Group G', value: 300 },
+    { name: 'NARAL PRO-CHOICE AMERICA PAC"', value: 103222.08 },
+    { name: 'HUMAN RIGHTS CAMPAIGN PAC', value: 453222 },
+    { name: 'NRA POLITICAL VICTORY FUND', value: 2971739.01 },
+    { name: 'NATIONAL BEER WHOLESALERS ASSOCIATION POLITICAL ACTION COMMITTEE', value: 135371.21 },
+    { name: 'TRUTHANDHOPE.ORG', value: 110772.96 },
+    { name: 'NRA POLITICAL VICTORY FUND', value: 3850.7 },
+    { name: 'NATIONAL REPUBLICAN CONGRESSIONAL COMMITTEE', value: 14924 },
 ];
 
 const renderActiveShape = (props) => {
     const RADIAN = Math.PI / 180;
     const {
         cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle,
-        fill, payload, percent, value,
+        fill, payload, percent
     } = props;
     const sin = Math.sin(-RADIAN * midAngle);
     const cos = Math.cos(-RADIAN * midAngle);
@@ -29,7 +29,7 @@ const renderActiveShape = (props) => {
 
     return (
         <g>
-            <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>{payload.name}</text>
+            <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>{`$${payload.value}`}</text>
             <Sector
                 cx={cx}
                 cy={cy}
@@ -50,10 +50,8 @@ const renderActiveShape = (props) => {
             />
             <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
             <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
-            <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{`PV ${value}`}</text>
-            <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#999">
-                {`(Rate ${(percent * 100).toFixed(2)}%)`}
-            </text>
+            <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{`${(percent * 100).toFixed(2)}%`}</text>
+            <text x={cx} y={cy + 100} dy={8} textAnchor="middle" >{payload.name}</text>
         </g>
     );
 };
@@ -73,20 +71,25 @@ export default class Example extends PureComponent {
 
     render() {
         return (
-            <PieChart width={400} height={400}>
-                <Pie
-                    activeIndex={this.state.activeIndex}
-                    activeShape={renderActiveShape}
-                    data={data}
-                    cx={200}
-                    cy={200}
-                    innerRadius={60}
-                    outerRadius={80}
-                    fill="#008ed7"
-                    dataKey="value"
-                    onMouseEnter={this.onPieEnter}
-                />
-            </PieChart>
+            <div style={{ width: '100%', height: 400 }}>
+
+                <ResponsiveContainer minWidth={600}>
+                    <PieChart>
+                        <Pie
+                            activeIndex={this.state.activeIndex}
+                            activeShape={renderActiveShape}
+                            data={data}
+                            // cx={200}
+                            // cy={200}
+                            innerRadius={60}
+                            outerRadius={80}
+                            fill="#008ed7"
+                            dataKey="value"
+                            onMouseEnter={this.onPieEnter}
+                        />
+                    </PieChart>
+                </ResponsiveContainer>
+            </div>
         );
     }
 }
