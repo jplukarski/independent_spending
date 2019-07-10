@@ -17,13 +17,22 @@ export default class CandidateSelect extends Component {
         }
     }
 
+    handleChange = (event) => {
+        this.setState({ value: event.target.value })
+    }
+
+    // componentWillReceiveProps = () => {
+    //     console.log(this.props.cycle)
+    // }
+
     render() {
         return (
             <Dropdown
                 button
+                search
                 options={this.state.candidateOptions}
                 selection
-                search
+                onSearchChange={this.handleChange}
                 placeholder="Select a Candidate"
             />
         )

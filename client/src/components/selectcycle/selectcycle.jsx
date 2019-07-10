@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Dropdown } from 'semantic-ui-react'
+import CandidateSelect from '../candidateSelect/candidateSelect'
 
 
 export default class SelectCycle extends Component {
@@ -17,18 +18,32 @@ export default class SelectCycle extends Component {
                 { key: '2008', text: '2008', value: '2008' },
                 { key: '2006', text: '2006', value: '2006' },
             ],
+            value: "whoahaohao"
         }
     }
 
+    handleChange = (e, { value }) => {
+        console.log(value)
+        this.setState({ value: value })
+    }
+
+
     render() {
         return (
-            <Dropdown
-                button
-                options={this.state.cycleoptions}
-                selection
-                search
-                placeholder="Select an Election Cycle"
-            />
+            <>
+                <Dropdown
+                    search
+                    options={this.state.cycleoptions}
+                    selection
+                    button
+                    onChange={this.handleChange}
+                    placeholder="Select an Election Cycle"
+                    onSearchChange={this.handleChange}
+                // value={this.state.value}
+                />
+                <CandidateSelect cycle={this.state.value} />
+            </>
+
         )
     }
 }
