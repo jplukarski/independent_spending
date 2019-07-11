@@ -6,13 +6,12 @@ export default class CandidateSelect extends Component {
         super(props);
         this.state = {
             candidateOptions: [
-                { key: 'Select a Candidate', text: 'Select a Candidate', value: 'Select a Candidate' },
                 { key: 'MONDALE, WALTER F.', text: 'MONDALE, WALTER F.', value: 'MONDALE, WALTER F.' },
                 { key: 'BUSH, GEORGE W', text: 'BUSH, GEORGE W', value: 'BUSH, GEORGE W' },
                 { key: 'KERRY, JOHN F', text: 'KERRY, JOHN F', value: 'KERRY, JOHN F' },
                 { key: 'COORS, PETER', text: 'COORS, PETER', value: 'COORS, PETER' },
                 { key: 'DEAN, HOWARD', text: 'DEAN, HOWARD', value: 'DEAN, HOWARD' },
-                { key: 'RENZI, RICHARD GEORGE', text: 'RENZI, RICHARD GEORGE', value: 'RENZI, RICHARD GEORGE' },
+                { key: 'RENZI, RICHARD GEORGE', text: 'RENZI, RICHARD GEORGE', value: 'RENZI, RICHARD GEORGE' }
             ],
         }
     }
@@ -21,9 +20,15 @@ export default class CandidateSelect extends Component {
         this.setState({ value: event.target.value })
     }
 
-    // componentWillReceiveProps = () => {
-    //     console.log(this.props.cycle)
-    // }
+    componentDidUpdate = () => {
+        if (this.props.candidates !== this.state.candidateOptions) {
+            // This makes this.state.candidateOptions an array. It needs to be 
+            this.setState({ candidateOptions: this.props.candidates }) //  an array of 
+            // objects that look like
+            // {key: this.props.candidate}, test: this.props.candidate, value: this.props.candidate}
+        }
+    }
+
 
     render() {
         return (

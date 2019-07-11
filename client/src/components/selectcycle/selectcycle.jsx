@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Dropdown } from 'semantic-ui-react'
-import CandidateSelect from '../candidateSelect/candidateSelect'
-
+import SelectedCycleCandidateDropdown from '../selectedCycleQuery/selectedCycleQuery'
 
 export default class SelectCycle extends Component {
     constructor(props) {
@@ -23,10 +22,8 @@ export default class SelectCycle extends Component {
     }
 
     handleChange = (e, { value }) => {
-        console.log(value)
         this.setState({ value: value })
     }
-
 
     render() {
         return (
@@ -41,9 +38,8 @@ export default class SelectCycle extends Component {
                     onSearchChange={this.handleChange}
                 // value={this.state.value}
                 />
-                <CandidateSelect cycle={this.state.value} />
+                <SelectedCycleCandidateDropdown cycle={this.state.value} />
             </>
-
         )
     }
 }
