@@ -1,15 +1,7 @@
 import React, { PureComponent } from 'react';
 import { PieChart, Pie, Sector, ResponsiveContainer } from 'recharts';
+import PieChartHeader from '../piechartHeader/piechartHeader'
 
-const data = [
-    { name: 'NARAL PRO-CHOICE AMERICA PAC"', value: 103222.08 },
-    { name: 'HUMAN RIGHTS CAMPAIGN PAC', value: 453222 },
-    { name: 'NRA POLITICAL VICTORY FUND', value: 2971739.01 },
-    { name: 'NATIONAL BEER WHOLESALERS ASSOCIATION POLITICAL ACTION COMMITTEE', value: 135371.21 },
-    { name: 'TRUTHANDHOPE.ORG', value: 110772.96 },
-    { name: 'NRA POLITICAL VICTORY FUND', value: 3850.7 },
-    { name: 'NATIONAL REPUBLICAN CONGRESSIONAL COMMITTEE', value: 14924 },
-];
 
 const renderActiveShape = (props) => {
     const RADIAN = Math.PI / 180;
@@ -59,9 +51,19 @@ const renderActiveShape = (props) => {
 
 export default class Example extends PureComponent {
 
-    state = {
-        activeIndex: 0,
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            activeIndex: 0,
+            // data: [
+            //     { name: 'NARAL PRO-CHOICE AMERICA PAC"', value: 103222.08 },
+            //     { name: 'NRA POLITICAL VICTORY FUND', value: 38650.7 },
+            //     { name: 'NATIONAL REPUBLICAN CONGRESSIONAL COMMITTEE', value: 149254 },
+            // ],
+            data: [],
+            dataFromProps: [],
+        }
+    }
 
     onPieEnter = (data, index) => {
         this.setState({
@@ -69,21 +71,35 @@ export default class Example extends PureComponent {
         });
     };
 
+    // formatData = (data) => {
+
+    // }
+
+    componentDidUpdate = () => {
+        if (this.props.data !== this.state.dataFromProps) {
+            // this.formatData(this.props.data)
+            let dataForPie = []
+            for (var i = 0; i < this.props.data.length; i++) {
+                dataForPie.push({ name: this.props.data[i].committee_name, value: this.props.data[i].total })
+            }
+            this.setState({ data: dataForPie, dataFromProps: this.props.data })
+        }
+    }
+
     render() {
         return (
             <div style={{ width: '100%', height: 400 }}>
 
                 <ResponsiveContainer minWidth={600}>
+                    {/* <PieChartHeader /> */}
                     <PieChart>
                         <Pie
                             activeIndex={this.state.activeIndex}
                             activeShape={renderActiveShape}
-                            data={data}
-                            // cx={200}
-                            // cy={200}
+                            data={this.state.data}
                             innerRadius={60}
                             outerRadius={80}
-                            fill="#008ed7"
+                            fill={this.props.support ? "#008ed7" : "#e1445e"}
                             dataKey="value"
                             onMouseEnter={this.onPieEnter}
                         />

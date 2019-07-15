@@ -16,6 +16,7 @@ export default class SelectCycle extends Component {
                 { key: '2010', text: '2010', value: '2010' },
                 { key: '2008', text: '2008', value: '2008' },
                 { key: '2006', text: '2006', value: '2006' },
+                { key: '2004', text: '2004', value: '2004' },
             ],
             value: "whoahaohao"
         }

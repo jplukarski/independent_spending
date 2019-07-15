@@ -6,39 +6,37 @@ export default class SelectedCycleCandidateDropdown extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            cycle: '.',
+            cycle: 'not chosen',
             uniqueCandidates: [],
-
+            cycleData: [],
         }
     }
 
     getUniqueCandidates = (data) => {
         let candidates = [];
-        // console.log(data[4])
         for (var i = 0; i < data.length; i++) {
             let incandidates = candidates.includes(data[i].candidate_name)
             if (!incandidates) {
                 candidates.push(data[i].candidate_name)
             }
         }
-        console.log(candidates)
-        // this.setState({ uniqueCandidates: candidates })
+        this.setState({ uniqueCandidates: candidates, cycleData: data })
     }
 
     componentDidUpdate = () => {
         if (this.props.cycle !== this.state.cycle) {
             API.getExpenditureByCycle(this.props.cycle).then(res =>
-                // this.setState({ payload: res.data })
                 this.getUniqueCandidates(res.data)
             )
                 .catch(err => console.log(err))
+            this.setState({ cycle: this.props.cycle })
         }
     }
 
     render() {
         return (
             <>
-                <CandidateSelect candidates={this.state.uniqueCandidates} />
+                <CandidateSelect candidates={this.state.uniqueCandidates} data={this.state.cycleData} />
             </>
         )
     }
