@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { PieChart, Pie, Sector, ResponsiveContainer } from 'recharts';
-import PieChartHeader from '../piechartHeader/piechartHeader'
+import Hello from '../pieChartHeader/pieChartHeader'
 
 
 const renderActiveShape = (props) => {
@@ -21,7 +21,7 @@ const renderActiveShape = (props) => {
 
     return (
         <g>
-            <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>{`$${payload.value}`}</text>
+            <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>{`${new Intl.NumberFormat('en-EN', { style: 'currency', currency: 'USD' }).format(payload.value)}`}</text>
             <Sector
                 cx={cx}
                 cy={cy}
@@ -56,8 +56,6 @@ export default class Example extends PureComponent {
         this.state = {
             activeIndex: 0,
             // data: [
-            //     { name: 'NARAL PRO-CHOICE AMERICA PAC"', value: 103222.08 },
-            //     { name: 'NRA POLITICAL VICTORY FUND', value: 38650.7 },
             //     { name: 'NATIONAL REPUBLICAN CONGRESSIONAL COMMITTEE', value: 149254 },
             // ],
             data: [],
@@ -89,9 +87,8 @@ export default class Example extends PureComponent {
     render() {
         return (
             <div style={{ width: '100%', height: 400 }}>
-
+                <Hello />
                 <ResponsiveContainer minWidth={600}>
-                    {/* <PieChartHeader /> */}
                     <PieChart>
                         <Pie
                             activeIndex={this.state.activeIndex}
