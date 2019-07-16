@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { PieChart, Pie, Sector, ResponsiveContainer } from 'recharts';
-import Hello from '../pieChartHeader/pieChartHeader'
+import PieChartHeader from '../pieChartHeader/pieChartHeader'
 
 
 const renderActiveShape = (props) => {
@@ -55,11 +55,10 @@ export default class Example extends PureComponent {
         super(props);
         this.state = {
             activeIndex: 0,
-            // data: [
-            //     { name: 'NATIONAL REPUBLICAN CONGRESSIONAL COMMITTEE', value: 149254 },
-            // ],
             data: [],
+        //  data: [{ name: 'NATIONAL REPUBLICAN CONGRESSIONAL COMMITTEE', value: 149254 }]
             dataFromProps: [],
+            candidate: 'Choose a candidate',
         }
     }
 
@@ -80,14 +79,14 @@ export default class Example extends PureComponent {
             for (var i = 0; i < this.props.data.length; i++) {
                 dataForPie.push({ name: this.props.data[i].committee_name, value: this.props.data[i].total })
             }
-            this.setState({ data: dataForPie, dataFromProps: this.props.data })
+            this.setState({ data: dataForPie, dataFromProps: this.props.data, candidate:this.props.candidate})
         }
     }
 
     render() {
         return (
             <div style={{ width: '100%', height: 400 }}>
-                <Hello />
+                <PieChartHeader committees={this.state.data.length} candidate={this.state.candidate} support={this.props.support} data={this.state.data}/>
                 <ResponsiveContainer minWidth={600}>
                     <PieChart>
                         <Pie

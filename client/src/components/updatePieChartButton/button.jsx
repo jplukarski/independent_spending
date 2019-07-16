@@ -7,7 +7,7 @@ export default class ButtonExampleEmphasis extends Component {
         super(props);
         this.state = {
             cycleData: [],
-            support: false,
+            support: true,
             candidate: '',
             dataForPiechart: [],
         }
@@ -21,7 +21,6 @@ export default class ButtonExampleEmphasis extends Component {
                 dataByCandidate.push({ committee_name: data[i].committee_name, total: data[i].total, support: data[i].support_oppose_indicator })
             }
         }
-        console.log(dataByCandidate)
         this.setState({ dataForPiechart: dataByCandidate })
     }
 
@@ -33,7 +32,6 @@ export default class ButtonExampleEmphasis extends Component {
                 dataByCandidate.push({ committee_name: data[i].committee_name, total: data[i].total, support: data[i].support_oppose_indicator })
             }
         }
-        console.log(dataByCandidate)
         this.setState({ dataForPiechart: dataByCandidate })
     }
 
@@ -58,7 +56,7 @@ export default class ButtonExampleEmphasis extends Component {
             <>
                 <Button primary fluid onClick={this.supportClick}>Support</Button>
                 <Button secondary fluid onClick={this.opposeClick}>Oppose</Button>
-                <Piechart data={this.state.dataForPiechart} support={this.state.support} />
+                <Piechart data={this.state.dataForPiechart} support={this.state.support} candidate={this.state.candidate} />
             </>
         )
     }
