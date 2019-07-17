@@ -37,7 +37,6 @@ export default class SelectCycle extends Component {
                     onChange={this.handleChange}
                     placeholder="Select an Election Cycle"
                     onSearchChange={this.handleChange}
-                // value={this.state.value}
                 />
                 <SelectedCycleCandidateDropdown cycle={this.state.value} />
             </>

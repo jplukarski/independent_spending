@@ -6,7 +6,7 @@ import SelectCycle from '../../components/selectcycle/selectcycle'
 const Home = () => (
     <>
         <Navbar />
-        <div style={{ marginTop: '7em' }}>
+        <div style={{ marginTop: '7em', marginBottom: '7em' }}>
             <SelectCycle />
         </div>
         <Footer />
