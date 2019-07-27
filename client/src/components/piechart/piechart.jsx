@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { PieChart, Pie, Sector, ResponsiveContainer } from 'recharts';
-import PieChartHeader from '../pieChartHeader/pieChartHeader'
+import PieChartHeader from '../piechartHeader/piechartHeader'
 
 
 const renderActiveShape = (props) => {
