@@ -1,18 +1,26 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from './pages/home'
-import About from './pages/about'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import Home from './pages/Home';
+import Admin from './pages/Admin'
+import Schedule_E_By_Candidate from './pages/Schedule_E_By_Candidate'
+import Candidates from './pages/Candidate_Information'
 
-const App = () => (
 
-  <div className="App">
+function App() {
+  return (
     <Router>
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/about" component={About} />
-      </Switch>
+          <Route exact path="/admin" component={Admin} />
+          <Route exact path="/admin/schedule_e_by_candidate" component={Schedule_E_By_Candidate} />
+          <Route exact path='/admin/candidates' component={Candidates}/>
+          <Route exact path="/" component={Home}/>
+        </Switch>
     </Router>
-  </div>
-)
+  );
+}
 
 export default App;
