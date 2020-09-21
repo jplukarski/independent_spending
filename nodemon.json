@@ -1,0 +1,7 @@
+{
+    "env": {
+        "MONGO_USER": "jplukarski",
+        "MONGO_PASSWORD": "Lemonjuice12!",
+        "MONGO_DB": "schedule_e_by_candidate"
+    }
+}

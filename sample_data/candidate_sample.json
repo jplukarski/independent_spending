@@ -1,0 +1,47 @@
+{
+    "pagination": {
+      "count": 0,
+      "page": 0,
+      "pages": 0,
+      "per_page": 0
+    },
+    "results": [
+      {
+        "active_through": 0,
+        "address_city": "string",
+        "address_state": "string",
+        "address_street_1": "string",
+        "address_street_2": "string",
+        "address_zip": "string",
+        "candidate_id": "string",
+        "candidate_inactive": true,
+        "candidate_status": "string",
+        "cycles": [
+          0
+        ],
+        "district": "string",
+        "district_number": 0,
+        "election_districts": [
+          "string"
+        ],
+        "election_years": [
+          0
+        ],
+        "federal_funds_flag": true,
+        "first_file_date": "2020-09-18",
+        "flags": "string",
+        "has_raised_funds": true,
+        "incumbent_challenge": "string",
+        "incumbent_challenge_full": "string",
+        "last_f2_date": "2020-09-18",
+        "last_file_date": "2020-09-18",
+        "load_date": "2020-09-18T23:37:28.418Z",
+        "name": "string",
+        "office": "string",
+        "office_full": "string",
+        "party": "string",
+        "party_full": "string",
+        "state": "string"
+      }
+    ]
+  }
