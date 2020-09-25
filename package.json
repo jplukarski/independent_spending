@@ -1,39 +1,45 @@
 {
-  "name": "super_pac_bros",
-  "version": "1.0.0",
+  "name": "independent_spending",
+  "version": "3.0.0",
   "description": "Data from FEC API on independent spending",
-  "main": "server.js",
+  "main": "./server/app.js",
   "engines": {
     "node": "10.5.0",
     "yarn": "1.10.1"
   },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.3.0",
+    "express": "^4.17.1",
+    "express-graphql": "^0.11.0",
+    "graphql": "^15.3.0",
+    "if-env": "^1.0.4",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+
+  },
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "node server.js",
+    "start:prod": "node ./server/app.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "seed": "node scripts/seedDB.js",
     "client": "cd client && npm run start",
     "install": "cd client && yarn install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jplukarski/schedule_e_by_candidate.git"
+    "url": "git+https://github.com/jplukarski/independent_spending.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jplukarski/schedule_e_by_candidate/issues"
+    "url": "https://github.com/jplukarski/independent_spending/issues"
   },
-  "homepage": "https://github.com/jplukarski/schedule_e_by_candidate#readme",
-  "dependencies": {
-    "axios": "^0.19.0",
-    "concurrently": "^4.1.0",
-    "express": "^4.17.1",
-    "if-env": "^1.0.4",
-    "mongoose": "^5.5.13",
-    "nodemon": "^1.19.1"
-  }
+  "homepage": "https://github.com/jplukarski/independent_spending#readme"
 }
