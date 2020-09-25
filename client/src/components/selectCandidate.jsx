@@ -16,7 +16,7 @@ const SelectCandidate = props => {
                 query: `query {expenditures(cycle:"${props.cycle}"){_id candidate_id candidate_name committee_name committee_id count cycle support_oppose_indicator total}}`
             }
             axios({
-                url:'http://localhost:3001/graphql',
+                url:'/graphql',
                 method: 'post',
                 data: requestBody
             })

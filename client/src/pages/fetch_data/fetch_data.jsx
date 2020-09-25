@@ -44,7 +44,7 @@ const Fetch_data = () => {
             console.log(requestBody)
             console.log(`This is the Request Body: ${JSON.stringify(requestBody)}`)
             axios({
-                url: 'http://localhost:3001/graphql',
+                url: '/graphql',
                 method: 'post',
                 data: requestBody
                 

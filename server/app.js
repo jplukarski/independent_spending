@@ -24,7 +24,6 @@ app.use(bodyParser.json());
 app.use('/graphql', graphqlHTTP({
     schema: graphqlSchema,
     rootValue: graphqlResolvers,
-    graphiql: true
 }));
 
 app.use(express.static(path.join(__dirname, '../client/build')))

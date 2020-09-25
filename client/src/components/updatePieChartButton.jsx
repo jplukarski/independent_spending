@@ -21,7 +21,7 @@ const UpdatePieChartButton = props => {
                   }`
             }
             axios({
-                url: 'http://localhost:3001/graphql',
+                url: '/graphql',
                 method: 'post',
                 data: requestBody
             })
