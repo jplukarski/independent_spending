@@ -1,9 +1,9 @@
 const Committee = require('../../models/committees')
 
 module.exports = {
-    committees: async () => {
+    committees: async args => {
         try {
-            const committees = await Committee.find()
+            const committees = await Committee.find(args)
             return committees.map(committee => {
                 return {
                     ...committee._doc,

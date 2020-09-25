@@ -1,9 +1,9 @@
 const Expenditure = require('../../models/expenditures')
 
 module.exports = {
-    expenditures: async () => {
+    expenditures: async args => {
         try {
-            const expenditures = await Expenditure.find()
+            const expenditures = await Expenditure.find(args)
             return expenditures.map(expenditure => {
                 return {
                     ...expenditure._doc,

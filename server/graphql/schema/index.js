@@ -185,7 +185,7 @@ type Expenditure {
     count: String
     cycle: String
     support_oppose_indicator: String
-    total: Int
+    total: String
 }
 
 input ExpenditureInput {
@@ -196,13 +196,13 @@ input ExpenditureInput {
     count: String
     cycle: String
     support_oppose_indicator: String
-    total: Int
+    total: String
 }
 
 type RootQuery {
     candidates: [Candidate!]!
-    comittees: [Committee!]!
-    expenditures: [Expenditure!]!
+    comittees(committee_id: String, name: String, party: String, party_full: String, party_type: String, party_type_full: String, state: String, state_full: String, website: String, zip: String): [Committee!]!
+    expenditures(committee_id: String, committee_name: String, candidate_id: String, candidate_name: String, cycle: String, support_oppose_indicator: String, total: String): [Expenditure!]!
 }
 
 type RootMutation {

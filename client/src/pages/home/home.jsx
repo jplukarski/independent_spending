@@ -1,8 +1,14 @@
 import React from 'react'
+import Navbar from '../../components/navbar'
+import SelectCycle from '../../components/selectCycle'
+import {Container} from 'semantic-ui-react'
 
 const Home = () => (
     <>
-        Hello World
+        <Navbar/>
+        <Container>
+            <SelectCycle/>
+        </Container>
     </>
 )
 
