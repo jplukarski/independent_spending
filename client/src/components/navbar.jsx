@@ -17,7 +17,7 @@ const Navbar = () => {
                     </Menu.Item>
 
                     <Menu.Item name='about' active={activeItem === 'reviews'} onClick={handleItemClick} href="/about">
-                        About
+                        About Independent Expenditures
                     </Menu.Item>
                 </Container>
             </Menu>
